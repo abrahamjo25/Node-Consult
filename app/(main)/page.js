@@ -4,10 +4,8 @@ import { Button } from 'primereact/button';
 import { Chart } from 'primereact/chart';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
-import { Menu } from 'primereact/menu';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { LayoutContext } from '../../layout/context/layoutcontext';
-import Link from 'next/link';
 
 const lineData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -103,7 +101,7 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        fetch('/demo/data/products-small.json', { headers: { 'Cache-Control': 'no-cache' } })
+        fetch('/demo/data/products-dashboard.json', { headers: { 'Cache-Control': 'no-cache' } })
             .then((res) => res.json())
             .then((d) => setProducts(d.data));
     }, []);
