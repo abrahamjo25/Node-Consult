@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import https from 'https';
-import { getCookie } from '../../../(main)/helper/storage';
 const fetchOptions = {
     agent: new https.Agent({
         rejectUnauthorized: false
@@ -48,4 +47,3 @@ export async function POST(req) {
         return { error: 'Internal server error', status: 500 };
     }
 }
-

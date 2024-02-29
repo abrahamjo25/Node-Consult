@@ -1,0 +1,110 @@
+/* SkeletonLoader.css */
+
+.skeleton-text,
+.skeleton-progress-bar,
+.skeleton-pie-chart,
+.skeleton-data-table-header,
+.text-percent,
+.text-dot,
+.skeleton-button,
+.skeleton-pie,
+.legend-skeleton,
+.skeleton-data-table-row {
+    animation: skeletonLoading 1.5s infinite ease-in-out;
+}
+
+@keyframes skeletonLoading {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.skeleton-text {
+    height: 20px;
+    width: auto;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.text-div {
+    width: 60%;
+}
+.text-percent {
+    height: 15px;
+    width: 20%;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+.text-dot {
+    height: 15px;
+    width: 17px;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+.skeleton-progress-bar {
+    height: 20px;
+    width: 100%;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.skeleton-button {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    cursor: not-allowed;
+}
+.chart-skeleton {
+    position: relative;
+    width: 300px; /* Set the width and height to match the size of the actual chart */
+    height: 300px;
+    background-color: #fff; /* Optional: Set a background color for the skeleton */
+}
+
+.skeleton-pie {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 60%; /* Adjust the size of the pie chart placeholder */
+    height: 60%;
+    background-color: #e0e0e0; /* Set a background color for the placeholder */
+    border-radius: 50%; /* Create a circle shape for the pie chart */
+}
+
+.legend-skeleton {
+    height: 10px;
+    width: 50px;
+    background-color: #e0e0e0;
+    border-radius: 6px;
+}
+
+.skeleton-data-table {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.skeleton-data-table-header {
+    height: 60px;
+    width: 100%;
+    background-color: #cccccc;
+    border-bottom: 1px solid #a0a0a0;
+}
+
+.skeleton-data-table-row {
+    height: 40px;
+    width: 100%;
+    background-color: #e0e0e0;
+    border-bottom: 1px solid #cccccc;
+}
