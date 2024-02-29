@@ -19,7 +19,7 @@ const AppTopbar = forwardRef((props, ref) => {
     }));
     const clearSession = () => {
         signOut();
-        removeCookie();
+        // removeCookie();
         window.location.href = '/auth/login';
     };
     return (

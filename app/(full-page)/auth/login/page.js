@@ -19,18 +19,18 @@ const LoginPage = (props) => {
     const [checked, setChecked] = useState(false);
     const { layoutConfig } = useContext(LayoutContext);
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
-        async function tokenGen() {
-            const res = await GET();
-            if (!res.ok) {
-                throw new Error('Unable to get access token!');
-            }
-            const data = await res.json();
-            setCookie('accessToken', data?.data?.accessToken, { expires: 1 });
-            setCookie('refreshToken', data?.data?.refreshToken, { expires: 1 });
-        }
-        tokenGen();
-    }, []);
+    // useEffect(() => {
+    //     async function tokenGen() {
+    //         const res = await GET();
+    //         if (!res.ok) {
+    //             throw new Error('Unable to get access token!');
+    //         }
+    //         const data = await res.json();
+    //         setCookie('accessToken', data?.data?.accessToken, { expires: 1 });
+    //         setCookie('refreshToken', data?.data?.refreshToken, { expires: 1 });
+    //     }
+    //     tokenGen();
+    // }, []);
     const router = useRouter();
     const containerClassName = classNames('surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden', { 'p-input-filled': layoutConfig.inputStyle === 'filled' });
     const origin = router.asPath;
@@ -43,26 +43,27 @@ const LoginPage = (props) => {
             };
             try {
                 setLoading(true);
-                const { data, status } = await POST(credential);
-                if (status === 200 && data?.idToken) {
+                // const { data, status } = await POST(credential);
+                // if (status === 200 && data?.idToken) {
+                // setCookie('data', JSON.stringify(data));
+                const login = await signIn('credentials', {
+                    ...credential,
+                    redirect: false,
+                    callbackUrl: '/'
+                });
+                if (!login.error) {
+                    router.push('/');
+                    router.refresh();
                     setCookie('data', JSON.stringify(data));
-                    const login = await signIn('credentials', {
-                        ...data,
-                        redirect: false,
-                        callbackUrl: '/'
-                    });
-                    if (!login.error) {
-                        router.push('/');
-                        router.refresh();
-                        setCookie('data', JSON.stringify(data));
-                    } else {
-                        setError('Incorrect credentials');
-                    }
                 } else {
-                    setError(data.errors[0]);
+                    setError('Incorrect credentials');
                 }
+                // }
+                // else {
+                //     setError(data.errors[0]);
+                // }
             } catch (error) {
-                setError('Network error. please try again ');
+                // setError('Network error. please try again ');
             } finally {
                 setLoading(false);
             }

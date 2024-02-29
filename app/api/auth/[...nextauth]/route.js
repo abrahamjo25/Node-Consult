@@ -10,19 +10,17 @@ const authOptions = {
             type: 'credentials',
             credentials: {},
             async authorize(credentials) {
-                const { username, role } = credentials;
+                const { username, password } = credentials;
 
-                // Include additional variables and JSON data in the user object
                 const user = {
                     id: 1,
-                    name: username,
-                    role: 'Admin',
-                    data: {
-                        ...credentials
-                    }
+                    name: username
                 };
+                if (username === 'admin' && password === 'admin') {
+                    return user;
+                }
 
-                return user;
+                return null;
             }
         })
     ],
